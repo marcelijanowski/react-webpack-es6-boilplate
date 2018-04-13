@@ -1,11 +1,10 @@
-var path = require('path');
+const path = require('path');
 const merge = require('webpack-merge');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var DashboardPlugin = require('webpack-dashboard/plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var pkg =  require(path.resolve(__dirname, '../package.json'));
-var common =  require('webpack.common.js');
-var webpack = require('webpack');
+const pkg =  require(path.resolve(__dirname, '../package.json'));
+const common =  require('./webpack.common');
+const webpack = require('webpack');
 
 
 module.exports = merge(common, {
@@ -19,16 +18,6 @@ module.exports = merge(common, {
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"',
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'vendor-[hash].min.js',
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        drop_console: false,
-      }
-    }),
+    })
   ]
 });

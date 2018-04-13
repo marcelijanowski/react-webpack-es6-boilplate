@@ -1,8 +1,11 @@
-var path = require('path');
-var pkg =  require(path.resolve(__dirname, '../package.json'));
-var common =  require('webpack.common');
+const path = require('path');
+const pkg =  require(path.resolve(__dirname, '../package.json'));
+const common =  require('./webpack.common');
+const DashboardPlugin = require('webpack-dashboard/plugin');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
 
-module.exports = {
+module.exports = merge(common,{
   plugins: [
     new DashboardPlugin(),
     new webpack.HotModuleReplacementPlugin()
@@ -17,4 +20,4 @@ module.exports = {
       "**/*.xml": path.resolve(__dirname, '../data/jupiter.xml'),
     }
   }
-};
+});

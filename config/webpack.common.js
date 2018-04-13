@@ -1,5 +1,7 @@
 var path = require('path');
 var pkg =  require(path.resolve(__dirname, '../package.json'));
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -9,10 +11,14 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: 'static/js/[name].[hash:8].js',
-    publicPath: '/'
+    publicPath: ''
   },
   plugins: [
-    new CleanWebpackPlugin(['dist'])
+    new CleanWebpackPlugin(['dist']),
+    new HtmlWebpackPlugin({
+      filename: path.resolve(__dirname, '../layout/index.html'),
+      title: 'Webpack template'
+    })
   ]
   
 };
