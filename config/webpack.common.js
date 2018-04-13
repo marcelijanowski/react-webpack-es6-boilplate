@@ -13,10 +13,23 @@ module.exports = {
     filename: 'static/js/[name].[hash:8].js',
     publicPath: ''
   },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: require.resolve('babel-loader'),
+        options: {
+          cacheDirectory: true,
+          plugins: ['react-hot-loader/babel'],
+        },
+      }
+    ]
+  },
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      filename: path.resolve(__dirname, '../layout/index.html'),
+      template: path.resolve(__dirname, '../layout/index.html'),
       title: 'Webpack template'
     })
   ]

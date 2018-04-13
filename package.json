@@ -1,22 +1,33 @@
 {
   "name": "webpack-packaging",
   "version": "1.0.0",
+  "author": "Marceli Janowski <marceli@mjdesign.pl>",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dashboard -- webpack-dev-server -d --hot --config config/webpack.dev.js --mode development --watch",
+    "start": "webpack-dashboard -- webpack-dev-server -d ---hotOnly --config config/webpack.dev.js --mode development --watch",
     "build": "webpack --config config/webpack.production.js --mode production"
   },
   "dependencies": {
     "react": "^16.3.1",
-    "react-dom": "^16.3.1"
+    "react-dom": "^16.3.1",
+    "redux": "^3.7.2",
+    "redux-observable": "^0.18.0",
+    "rxjs": "^5.5.10"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.26.0",
     "clean-webpack-plugin": "^0.1.19",
+    "enzyme": "^3.3.0",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^22.4.3",
     "jsxobj": "^1.1.0",
+    "react-hot-loader": "^4.0.1",
     "webpack": "^4.5.0",
     "webpack-bundle-analyzer": "^2.11.1",
     "webpack-cli": "^2.0.14",
