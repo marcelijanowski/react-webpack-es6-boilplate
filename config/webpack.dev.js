@@ -5,14 +5,14 @@ const DashboardPlugin = require('webpack-dashboard/plugin');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 
-module.exports = merge(common,{
+module.exports = merge(common, {
   plugins: [
-    new DashboardPlugin(),
+    new DashboardPlugin({ port: 8080 }),
     new webpack.HotModuleReplacementPlugin()
   ],
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: path.join(__dirname, "../dist"),
     compress: true,
     port: 9000,
     hot: true,
