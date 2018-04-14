@@ -15,7 +15,6 @@ import {
 } from './reducers';
 
 import App from './containers/App/AppContrainer';
-import './assets/styles/global.scss';
 
 const history = createHistory();
 
