@@ -9,24 +9,28 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = merge(common, {
   module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader"
-        })
-      }
-    ]
+    rules: [{
+      test: /\.css$/,
+      loader: ExtractTextPlugin.extract({
+        fallback: 'style-loader', 
+        use: 'css-loader'
+      })
+    }]
   },
   plugins: [
-    new ExtractTextPlugin("[name].css"),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"',
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../layout/production.html'),
       title: 'Webpack template'
+    }),
+    new webpack.DefinePlugin({
+      '__ROOTAPI__': JSON.stringify("http://localhost:8000")
+    }),
+    new ExtractTextPlugin({
+      filename: 'static/css/[name].[hash:8].css',
+      allChunks: true
     })
   ]
 });

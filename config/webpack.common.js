@@ -2,6 +2,7 @@ var path = require('path');
 var pkg =  require(path.resolve(__dirname, '../package.json'));
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -20,9 +21,17 @@ module.exports = {
         exclude: /node_modules/,
         loader: require.resolve('babel-loader'),
         options: {
+          // This is a feature of `babel-loader` for Webpack (not Babel itself).
+          // It enables caching results in ./node_modules/.cache/babel-loader/
+          // directory for faster rebuilds.
           cacheDirectory: true,
           plugins: ['react-hot-loader/babel'],
         },
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
       },
       {
         test: /\.(sass|scss)$/,
@@ -37,8 +46,15 @@ module.exports = {
               sourceMap: true
           },
         }]
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader',
+        })
       }
-    ]
+    ],
   },
   resolve: {
     extensions: ['*', '.js', '.jsx'],
