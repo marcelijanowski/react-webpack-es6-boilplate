@@ -2,7 +2,6 @@ var path = require('path');
 var pkg =  require(path.resolve(__dirname, '../package.json'));
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -31,21 +30,13 @@ module.exports = {
             loader: "style-loader" 
         }, {
             loader: "css-loader", options: {
-            sourceMap: true,
-            importLoaders: 2
+            sourceMap: true
           },
         }, {
             loader: "sass-loader" , options: {
               sourceMap: true
           },
         }]
-      },
-      {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader','sass-loader']
-        }),
       }
     ]
   },
