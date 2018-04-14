@@ -4,11 +4,11 @@ const common =  require('./webpack.common');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = merge(common, {
   plugins: [
-    new DashboardPlugin({ port: 8080 }),
-    new webpack.HotModuleReplacementPlugin()
+    new DashboardPlugin(),
   ],
   devtool: 'inline-source-map',
   devServer: {

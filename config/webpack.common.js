@@ -5,12 +5,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, '../src/index.jsx'),
-    vendor: Object.keys(pkg.dependencies)
+    app: path.resolve(__dirname, '../src/index.jsx')
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: 'static/js/[name].[hash:8].js',
+    chunkFilename: 'static/js/chunk-[name].js',
     publicPath: ''
   },
   module: {
@@ -25,6 +25,9 @@ module.exports = {
         },
       }
     ]
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx'],
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
