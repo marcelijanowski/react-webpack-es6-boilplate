@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HackerNewsStory container renders a snapshot 1`] = `
+<div
+  className="hackernews"
+>
+  <h1
+    className="hackernews-header"
+  >
+    Hello World
+  </h1>
+</div>
+`;

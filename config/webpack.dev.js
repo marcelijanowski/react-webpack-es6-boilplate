@@ -10,6 +10,9 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = merge(common, {
   plugins: [
     new DashboardPlugin(),
+    new webpack.DefinePlugin({
+      '__ROOTAPI__': JSON.stringify("https://hacker-news.firebaseio.com/v0")
+    }),
   ],
   devtool: 'inline-source-map',
   devServer: {
