@@ -1,0 +1,87 @@
+$_color-base-white: #FFF;
+$_color-base-black: #000;
+$_color-base-grey: #DCDCDC;
+$_color-base-charcoal: #404040;
+$_color-base-turquoise: #50E3C2;
+$_color-base-red: #e3454f;
+$_color-base-blue: #006DEF;
+$_color-base-green: #009d2f;
+
+$palettes: (
+	white: (
+		x-light: lighten($_color-base-white, 60%),
+		light: lighten($_color-base-white, 40%),
+		mid-light: lighten($_color-base-white, 10%),
+		base: $_color-base-white,
+		mid-dark: darken($_color-base-white, 10%),
+		dark: darken($_color-base-white, 40%),
+		x-dark: darken($_color-base-white, 60%)
+	),
+	black: (
+		x-light: lighten($_color-base-black, 60%),
+		light: lighten($_color-base-black, 40%),
+		mid-light: lighten($_color-base-black, 10%),
+		base: $_color-base-black,
+		mid-dark: darken($_color-base-black, 10%),
+		dark: darken($_color-base-black, 40%),
+		x-dark: darken($_color-base-black, 60%)
+	),
+	grey: (
+		x-light: lighten($_color-base-grey, 60%),
+		light: lighten($_color-base-grey, 40%),
+		mid-light: lighten($_color-base-grey, 10%),
+		base: $_color-base-grey,
+		mid-dark: darken($_color-base-grey, 10%),
+		dark: darken($_color-base-grey, 40%),
+		x-dark: darken($_color-base-grey, 60%)
+	),
+	charcoal: (
+		x-light: lighten($_color-base-charcoal, 60%),
+		light: lighten($_color-base-charcoal, 40%),
+		mid-light: lighten($_color-base-charcoal, 10%),
+		base: $_color-base-charcoal,
+		mid-dark: darken($_color-base-charcoal, 10%),
+		dark: darken($_color-base-charcoal, 40%),
+		x-dark: darken($_color-base-charcoal, 60%)
+	),
+	turquoise: (
+		x-light: lighten($_color-base-turquoise, 60%),
+		light: lighten($_color-base-turquoise, 40%),
+		mid-light: lighten($_color-base-turquoise, 10%),
+		base: $_color-base-turquoise,
+		mid-dark: darken($_color-base-turquoise, 10%),
+		dark: darken($_color-base-turquoise, 40%),
+		x-dark: darken($_color-base-turquoise, 60%)
+	),
+	red: (
+		x-light: lighten($_color-base-red, 60%),
+		light: lighten($_color-base-red, 40%),
+		mid-light: lighten($_color-base-red, 10%),
+		base: $_color-base-red,
+		mid-dark: darken($_color-base-red, 10%),
+		dark: darken($_color-base-red, 40%),
+		x-dark: darken($_color-base-red, 60%)
+	),
+	blue: (
+		x-light: lighten($_color-base-blue, 60%),
+		light: lighten($_color-base-blue, 40%),
+		mid-light: lighten($_color-base-blue, 10%),
+		base: $_color-base-blue,
+		mid-dark: darken($_color-base-blue, 10%),
+		dark: darken($_color-base-blue, 40%),
+		x-dark: darken($_color-base-blue, 60%)
+	),
+	green: (
+		x-light: lighten($_color-base-green, 60%),
+		light: lighten($_color-base-green, 40%),
+		mid-light: lighten($_color-base-green, 10%),
+		base: $_color-base-green,
+		mid-dark: darken($_color-base-green, 10%),
+		dark: darken($_color-base-green, 40%),
+		x-dark: darken($_color-base-green, 60%)
+	)
+);
+
+@function palette($palette, $tone: 'base') {
+	@return map-get(map-get($palettes, $palette), $tone);
+}
