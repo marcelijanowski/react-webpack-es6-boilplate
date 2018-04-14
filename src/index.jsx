@@ -13,6 +13,7 @@ import {
   rootEpic, 
   rootReducer
 } from './reducers';
+
 import App from './containers/App/AppContrainer';
 
 const history = createHistory();
@@ -27,7 +28,6 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    { /* ConnectedRouter will use the store from Provider automatically */ }
     <ConnectedRouter history={history}>
       <div>
           <Route exact path="/" component={App}/>
