@@ -10,6 +10,9 @@
     "test": "jest "
   },
   "jest": {
+    "globals": {
+      "__ROOT_API__": "https://hacker-news.firebaseio.com/v0"
+    },
     "modulePaths": [
       "/shared/vendor/modules"
     ],
@@ -59,10 +62,12 @@
     "jest": "^22.4.3",
     "jsdom": "^11.7.0",
     "jsxobj": "^1.1.0",
+    "nock": "^9.2.5",
     "node-sass": "^4.8.3",
     "react-hot-loader": "^4.0.1",
     "react-test-renderer": "^16.3.1",
     "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.5.1",
     "sass": "^1.1.1",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.20.3",
