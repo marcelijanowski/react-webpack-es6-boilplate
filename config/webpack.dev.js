@@ -20,8 +20,7 @@ module.exports = merge(common, {
     compress: true,
     port: 9000,
     hot: true,
-    proxy: {
-      "**/*.xml": path.resolve(__dirname, '../data/jupiter.xml'),
-    }
+    overlay: true,
+    open: true
   }
 });
