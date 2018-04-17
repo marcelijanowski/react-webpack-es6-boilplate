@@ -1,24 +1,12 @@
 import 'whatwg-fetch';
+
 import { validateStatusCode } from '../../utils/validation';
 
-export async function getTopStories() {
-
-  const endpoint = '/topstories.json';
-
-  const response = fetch(__ROOT_API__ + endpoint);
-  if (!validateStatusCode(response)) {
-    throw new Error(response.status); 
-  }
-  return response.json();
-}
-
-export async function getStory(storyId) {
-  const endpoint = `/item/${storyId}.json`;
-
-  const response = fetch(__ROOT_API__ + endpoint);
+export async function getRequest(url) {
+  const response = await fetch(__ROOT_API__ + url);
   
   if (!validateStatusCode(response)) {
-    throw new Error(response.status); 
+    throw new Error('Some error occured'); 
   }
   return response.json();
-}
+};

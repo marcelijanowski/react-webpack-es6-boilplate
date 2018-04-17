@@ -1,36 +1,42 @@
 import {
-  getStory,
-  getTopStories
+  getRequest
 } from './hackernews-service';
 import nock from 'nock'
 import * as story from '../../../data/hackernews/story.json';
 
 describe('Hackernews service ', () => {
   beforeEach(() => {
-    // nock.disableNetConnect();
+    nock.disableNetConnect();
   });
   afterEach(() => {
     nock.cleanAll();
-    nock.restore();
-  })
-  describe('get story', () => {
-    it('should return proper version on success call', async() => {
-      const story = nock(__ROOT_API__)
-                        
+  });
+  describe('get request', () => {
+    it('should return proper version on success call', async () => {
+      const mock = require('../../../data/hackernews/story.json');
+      nock(__ROOT_API__)
+        .defaultReplyHeaders({ 'access-control-allow-origin': '*' })
+        .get('/item/21.json')
+        .reply(200, mock);
 
-      const respose = await getStory(123);
-      // expect(respose).toEqual({});
+      const response = await getRequest('/item/21.json');
+      expect(response).toEqual(mock);
     });
-    // it('should return error code on wrong call', async() => {
-    //   nock('https://hacker-news.firebaseio.com/v0')
-    //     .get('/item/.json')
-    //     .reply(400,{});
-      
-    //   const respose = await getStory(400);
-      
-    //   expect(respose).toThrowError({});
-    // });
+    it('should return error code on wrong call', async() => {
+        nock(__ROOT_API__)
+          .defaultReplyHeaders({ 'access-control-allow-origin': '*' })
+          .get('/item/2.json')
+          .reply(404, null);
+
+      try {
+        await getRequest('/item/2.json');
+      } catch (error) {
+        await expect(error).toEqual(new Error("Some error occured"));
+      }
+    });
   });
 
 
-})
+});
+
+
