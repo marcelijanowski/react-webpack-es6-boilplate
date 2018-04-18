@@ -31,7 +31,7 @@ describe('Hackernews service ', () => {
       try {
         await getRequest('/item/2.json');
       } catch (error) {
-        await expect(error).toEqual(new Error("Some error occured"));
+        expect(error).toEqual(new Error("Some error occured"));
       }
     });
   });
