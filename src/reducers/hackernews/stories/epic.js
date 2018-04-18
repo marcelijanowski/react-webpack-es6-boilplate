@@ -12,11 +12,11 @@ import {
 
 import { type, actions } from './action';
 
-const getHackernewsStoryEpic = action$ => 
+export const getHackernewsStoryEpic = action$ => 
   action$.ofType(type.GET_HACKERNEWS_STORIES_REQUEST)
          .switchMap(action =>  Observable.from(getHackernewsStoriesService()))
          .map(result => actions.getHackernewsStoriesRequestSuccess(result))
-         .takeUntil(action$.ofType(type.GET_BRANDS_REQUEST_CANCEL))
+         .takeUntil(action$.ofType(type.GET_HACKERNEWS_STORIES_REQUEST_CANCEL))
          .catch((error) => actions.getHackernewsStoriesRequestFailure(error));
 
 export default combineEpics(
