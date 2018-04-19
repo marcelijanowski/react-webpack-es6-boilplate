@@ -25,6 +25,10 @@ describe('Hackernews stories epic', () => {
       store.dispatch({
         type: type.GET_HACKERNEWS_STORIES_REQUEST
       });
+
+      expect(store.getActions()).toEqual([
+        { type: type.GET_HACKERNEWS_STORIES_REQUEST }
+      ]);
     });
     it('should return failure on request failure', async () => {
 
