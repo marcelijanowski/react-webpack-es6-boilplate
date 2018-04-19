@@ -1,5 +1,23 @@
 # Webpack es6 with Redux and RxJX 
 This is sample small project build with React, Redux, RxJx, redux-observabled.
-Project is unit tested with Jest and UI is tested by Snapshots.
+Main purpuse of project is to create a playground to have production ready product which will do http request to
+hackernews and display it to user
 
-Build in progress.
+## Getting started
+
+Clone the repo and install Node dependencies
+```
+git clone https://github.com/bbc/cap-web-components.git
+yarn install
+```
+
+### Local development
+
+* Run `yarn build`:  this command is generating the bundles into `dist` folder.
+* Your defulat web browser will open with localhost:9000
+
+### Testing components
+
+We are using [Jest](https://facebook.github.io/jest/), [Enzyme](http://airbnb.io/enzyme/) to test components.
+
+* Run `yarn test`
