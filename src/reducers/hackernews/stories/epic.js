@@ -1,10 +1,11 @@
 import { ofType } from 'redux-observable';
 import { combineEpics } from 'redux-observable';
-import 'rxjs/add/observable/from';
-import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/takeUntil';
-import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import { switchMap } from 'rxjs/add/operator/switchMap';
+import { from } from 'rxjs/observable/from';
+import { of } from 'rxjs/observable/of';
 
 import { 
   get as getHackernewsStoriesService
@@ -14,10 +15,12 @@ import { type, actions } from './action';
 
 export const getHackernewsStoryEpic = action$ => 
   action$.ofType(type.GET_HACKERNEWS_STORIES_REQUEST)
-         .switchMap(action =>  Observable.from(getHackernewsStoriesService()))
-         .map(result => actions.getHackernewsStoriesRequestSuccess(result))
-         .takeUntil(action$.ofType(type.GET_HACKERNEWS_STORIES_REQUEST_CANCEL))
-         .catch((error) => actions.getHackernewsStoriesRequestFailure(error));
+          .switchMap(
+            action =>  from(getHackernewsStoriesService()
+                        .takeUntil(action$.ofType(state.GET_HACKERNEWS_STORIES_REQUEST_CANCEL))
+                        .map(result => actions.getHackernewsStoriesRequestSuccess(result))
+                        .catch((error) => actions.getBrandsRequestFailure(error))
+        ));
 
 export default combineEpics(
   getHackernewsStoryEpic
