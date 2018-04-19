@@ -16,6 +16,20 @@ yarn install
 * Run `yarn build`:  this command is generating the bundles into `dist` folder.
 * Your defulat web browser will open with localhost:9000
 
+### Components
+
+#### Getting started
+
+* React components live in the `components` folder. Each component should be built in its own folder using [Atomic design](http://atomicdesign.bradfrost.com/chapter-2/) and the [BBC Grandstand](https://github.com/bbc/grandstand) CSS library.
+
+#### Building new components
+
+I generally use **Stateless Functional (vanilla ES6)** design  for Atoms. We generally use **React Components (extends React.Component)** for molecules and organisms.
+
+- [ ] I ensure components implement some kind of `shouldRender()` functionality to cover `.isRequired` props.
+- [ ] I use a `renderXYZ()` style for partials, rather than inline `{ condition && <JSX /> }`.
+- [ ] We ensure all components have complete [unit tests](#testing-components) (not just snapshots).
+
 ### Testing components
 
 We are using [Jest](https://facebook.github.io/jest/), [Enzyme](http://airbnb.io/enzyme/) to test components.
