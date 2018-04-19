@@ -21,3 +21,9 @@ yarn install
 We are using [Jest](https://facebook.github.io/jest/), [Enzyme](http://airbnb.io/enzyme/) to test components.
 
 * Run `yarn test`
+
+
+## Production
+
+* Run `yarn build`
+* Dist folder will be create with production, minimized version
