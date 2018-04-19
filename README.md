@@ -20,7 +20,7 @@ yarn install
 
 #### Getting started
 
-* React components live in the `components` folder. Each component should be built in its own folder using [Atomic design](http://atomicdesign.bradfrost.com/chapter-2/) 
+React components live in the `components` folder. Each component should be built in its own folder using [Atomic design](http://atomicdesign.bradfrost.com/chapter-2/) 
 
 #### Building new components
 
@@ -32,7 +32,7 @@ I generally use **Stateless Functional (vanilla ES6)** design  for Atoms. We gen
 
 ### Testing components
 
-We are using [Jest](https://facebook.github.io/jest/), [Enzyme](http://airbnb.io/enzyme/) to test components.
+I'm using [Jest](https://facebook.github.io/jest/), [Enzyme](http://airbnb.io/enzyme/) to test components.
 
 * Run `yarn test`
 
