@@ -31,6 +31,22 @@ I generally use **Stateless Functional (vanilla ES6)** design  for Atoms. We gen
 - [ ] I use a `renderXYZ()` style for partials, rather than inline `{ condition && <JSX /> }`.
 - [ ] We ensure all components have complete [unit tests](#testing-components) (not just snapshots).
 
+## Project Structure
+
+```
+.
+├── dist                        # production build output
+├── data                        # json mock data 
+├── layout                      # template
+└── src                         # app source code
+    ├── components              # global reusable presentational components
+    ├── containers              # container components providing redux context
+    ├── reducer                 # redux reducer with action/epics/reducer
+    ├── services                # modules abstracting communication with web 
+    ├── utils                   # app utility modules
+    └── index.js                # app entry module with routing config
+```
+
 ### Testing components
 
 I'm using [Jest](https://facebook.github.io/jest/), [Enzyme](http://airbnb.io/enzyme/) to test components.
