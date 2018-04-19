@@ -20,7 +20,7 @@ yarn install
 
 #### Getting started
 
-* React components live in the `components` folder. Each component should be built in its own folder using [Atomic design](http://atomicdesign.bradfrost.com/chapter-2/) and the [BBC Grandstand](https://github.com/bbc/grandstand) CSS library.
+* React components live in the `components` folder. Each component should be built in its own folder using [Atomic design](http://atomicdesign.bradfrost.com/chapter-2/) 
 
 #### Building new components
 
