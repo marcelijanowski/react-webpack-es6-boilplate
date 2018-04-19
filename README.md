@@ -1,4 +1,5 @@
-# Webpack es6 with Redux and RxJX 
+# Hackernews playground API with webpack/es6/redux/redux-observable/rxJx
+ 
 This is sample small project build with React, Redux, RxJx, redux-observabled.
 Main purpuse of project is to create a playground to have production ready product which will do http request to
 hackernews and display it to user
