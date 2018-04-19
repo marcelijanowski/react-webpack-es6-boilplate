@@ -7,7 +7,7 @@ hackernews and display it to user
 
 Clone the repo and install Node dependencies
 ```
-git clone https://github.com/bbc/cap-web-components.git
+git clone https://github.com/marcelijanowski/react-webpack-es6-boilplate.git
 yarn install
 ```
 
