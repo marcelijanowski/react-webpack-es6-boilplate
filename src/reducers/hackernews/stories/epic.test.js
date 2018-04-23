@@ -1,39 +1,61 @@
-import { getHackernewsStoryEpic } from  './epic';
 import nock from 'nock';
-
 import configureMockStore from 'redux-mock-store';
 import { createEpicMiddleware } from 'redux-observable';
-import { default as storiesEpic } from './epic';
+import { ActionsObservable } from 'redux-observable';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/toArray';
+
+import { getHackernewsStoryEpic } from './epic';
 import { type, actions } from './action';
 
-const epicMiddleware = createEpicMiddleware(storiesEpic);
-const mockStore = configureMockStore([epicMiddleware]);
+
 
 describe('Hackernews stories epic', () => {
-  let store;
-
-  beforeEach(() => {
-    store = mockStore();
-  });
-  afterEach(() => {
-    nock.cleanAll();
-    epicMiddleware.replaceEpic(storiesEpic);
-  });
-
   describe('getHackernewsStoryEpic', () => {
-    it('should return success on request success', async () => {
-      store.dispatch({
-        type: type.GET_HACKERNEWS_STORIES_REQUEST
-      });
+    beforeEach(() => {
+    });
 
-      expect(store.getActions()).toEqual([
-        { type: type.GET_HACKERNEWS_STORIES_REQUEST }
-      ]);
+    afterEach(() => {
+      nock.cleanAll();
+    });
+    it('should return success on request success',  async () => {
+      const mock = require('../../../../data/hackernews/topstories.json');
+
+      nock(__ROOT_API__)
+        .defaultReplyHeaders({ 'access-control-allow-origin': '*' })
+        .get('/topstories.json')
+        .reply(200, mock);
+        
+        const action$ = ActionsObservable.of(
+          {type: type.GET_HACKERNEWS_STORIES_REQUEST}
+        );
+        const expectedAction = [actions.getHackernewsStoriesRequestSuccess(mock)]
+        await getHackernewsStoryEpic(action$)
+          .toArray()
+          .toPromise()
+          .then(actualOutputActions => {
+             expect(actualOutputActions).toEqual(expectedAction)
+        });
     });
     it('should return failure on request failure', async () => {
-
+      nock(__ROOT_API__)
+        .defaultReplyHeaders({ 'access-control-allow-origin': '*' })
+        .get('/topstories.json')
+        .reply(404);
+        
+        const action$ = ActionsObservable.of(
+          {type: type.GET_HACKERNEWS_STORIES_REQUEST}
+        );
+        const expectedAction = [actions.getHackernewsStoriesRequestFailure("Some error occured")]
+        await getHackernewsStoryEpic(action$)
+          .toArray()
+          .toPromise()
+          .then(actualOutputActions => {
+             expect(actualOutputActions).toEqual(expectedAction)
+        });
     });
-    it('should cancel request when user cancel', async () => {
+    xit('should cancel request when user cancel', async () => {
 
     });
   });
