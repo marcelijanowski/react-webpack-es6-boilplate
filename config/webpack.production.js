@@ -26,7 +26,7 @@ module.exports = merge(common, {
       title: 'Webpack template'
     }),
     new webpack.DefinePlugin({
-      '__ROOTAPI__': JSON.stringify("https://hacker-news.firebaseio.com/v0")
+      '__ROOT_API__': JSON.stringify("https://hacker-news.firebaseio.com/v0")
     }),
     new ExtractTextPlugin({
       filename: 'static/css/[name].[hash:8].css',
