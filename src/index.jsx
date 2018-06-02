@@ -14,7 +14,7 @@ import {
   rootReducer
 } from './reducers';
 
-import HomePage from './pages/home-page/home-page';
+import HomePage from './pages/home-page'
 
 const history = createHistory();
 
