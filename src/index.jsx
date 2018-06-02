@@ -14,7 +14,7 @@ import {
   rootReducer
 } from './reducers';
 
-import App from './containers/App/AppContrainer';
+import HomePage from './pages/home-page/home-page';
 
 const history = createHistory();
 
@@ -30,7 +30,7 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <div>
-          <Route exact path="/" component={App}/>
+        <Route exact path="/" component={HomePage}/>
       </div>
     </ConnectedRouter>
   </Provider>,
