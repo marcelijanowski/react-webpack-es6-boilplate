@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { getHackernewsStoriesRequest } from '../../reducers/hackernews/stories/action';
+import { actions } from '../../reducers/hackernews/stories/action';
 
 export class HackernewsList extends Component {
   state = {
