@@ -7,7 +7,8 @@
   "scripts": {
     "start": "webpack-dashboard -- webpack-dev-server -d ---hot ---inline --config config/webpack.dev.js --mode development --watch",
     "build": "webpack --config config/webpack.production.js --mode production",
-    "test": "jest "
+    "test": "jest ",
+    "snap": "jest --updateSnapshot"
   },
   "jest": {
     "globals": {
@@ -31,7 +32,7 @@
   },
   "dependencies": {
     "history": "^4.7.2",
-    "material-ui": "^0.20.0",
+    "material-ui": "^0.20.1",
     "normalize.css": "^8.0.0",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
