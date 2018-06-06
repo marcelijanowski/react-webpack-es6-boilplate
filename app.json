@@ -1,0 +1,15 @@
+{
+  "name": "react-webpack-es6-boilplate",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}
