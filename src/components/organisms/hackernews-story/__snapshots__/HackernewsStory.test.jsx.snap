@@ -1,13 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HackerNewsStory container renders a snapshot 1`] = `
-<div
-  className="hackernews"
+exports[`HackerNewsStory container renders a snapshot when not props are set 1`] = `
+<li
+  class="mdc-list-item"
 >
-  <h1
-    className="hackernews-header"
+  <span
+    class="mdc-list-item__text"
   >
-    Hello World
-  </h1>
-</div>
+    1
+    <span
+      class="mdc-list-item__secondary-text"
+    >
+      Second-line text
+    </span>
+  </span>
+</li>
 `;

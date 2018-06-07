@@ -13,6 +13,13 @@ describe('HackernewsList container', () => {
     const tree = renderer.create(<HackernewsList 
       type="topStory"
       getHackernewsStoriesRequest={getHackernewsStoriesRequest}
+      hackernewsStory={{
+        error: null,
+        isFetching: false,
+        stories: [{
+          id: 1
+        }]
+      }}
     />).toJSON();
     expect(tree).toMatchSnapshot();
   });
