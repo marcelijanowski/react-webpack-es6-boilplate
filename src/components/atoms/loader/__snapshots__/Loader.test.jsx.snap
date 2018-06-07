@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HackernewsList container renders a snapshot 1`] = `
+<div
+  className="hackernewslist-state__loading"
+>
+  Data is loading...
+</div>
+`;

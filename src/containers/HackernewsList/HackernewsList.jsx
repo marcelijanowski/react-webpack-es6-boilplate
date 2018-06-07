@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 
 import { actions } from '../../reducers/hackernews/stories/action';
 import HackernewsStory from '../../components/organisms/hackernews-story/HackernewsStory';
+import Loader from '../../components/atoms/loader/Loader';
+import ErrorMesage from '../../components/atoms/error-message/ErrorMessage';
+
 export class HackernewsList extends Component {
   state = {
     isLoading: false,
@@ -41,8 +44,8 @@ export class HackernewsList extends Component {
     const { isLoading, items, error } = this.state;
     return (
       <React.Fragment>
-      { error &&  (<div className="hackernewslist-state__loading">There are some problems with loading stories...</div>)}
-      { isLoading  &&  (<div className="hackernewslist-state_error">Data is loading</div>) } 
+      { isLoading &&  (<Loader text="Data is loading..."/>)}
+      { error  &&  (<ErrorMesage text="There are some problems with loading stories..." />) } 
       { items &&  (
         <ul class="mdc-list hackernewslist_list">
           { items.length && items.map(item => <HackernewsStory item={item} key={item.id} />)}
